@@ -1,75 +1,123 @@
-body {
-	background-color: #232323;
-	margin: 0;
-	font-family: "Avenir";
+#home{
 
-	
 }
-.square {
-	width: 30%;
-	background: purple;
-	padding-bottom: 30%;
-	float: left;
-	margin: 1.66%;
-  	border-radius: 15%;
-  	transition: background 0.6s;
-  	-webkit-transition: background 0.6s;
-	-moz-transition: background 0.6s;
-}
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	  margin-right: auto;
+	  width: 100%;
+	  display: block;
+	  opacity: 1
 
-#container {
-	max-width: 600px;
-	margin: 0 auto;
-	padding-top: 20px;
+}
+html{
+	scroll-behavior: smooth;
 }
 
-h1 {
-	color:white;
+/*img:hover{
+	opacity: .5;
+}*/
+
+.pichover{
+	padding-top: 5px;
+}
+
+.pichover:hover{
+	opacity: .5
+}
+
+#about{
+	background-color: #edecea;
+	color: #757575
+
+}
+
+#sentence{
+	font-size:50px;
+	color: #757575;
+	font-family: "nunito";
+	font-weight: lighter;
+
+}
+
+#projects{
+	background-color: #edecea;
+	color: #757575
+}
+
+body{
+	background-color: #edecea;
+}
+
+#scroll{
+	display: flex;
+  	justify-content: center;
+ 	align-items: center;
+  	height: 200px;
+}
+
+.contact{
+	background-color: #edecea;
+	height: 200px
+}
+
+.centered{
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 3.0em;
+	font-weight: lighter;
+	padding-bottom: 3%;
+}
+h1{
+	position: fixed;
+	top: 100%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 1.0em;
+	font-weight: lighter;
+
+}
+p{
 	text-align: center;
-	background: steelblue;
-	margin:0;
 	font-weight: normal;
-	text-transform: uppercase;
-	line-height: 1.1;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	font-family: "nunito"
+
 }
 
-#colorDisplay {
-	font-size: 200%;
-}
-#message {
-	display: inline-block;
-	width: 20%;
-}
-#stripe {
-	background-color: white;
-	height: 30px;
-	text-align:center;
-	color: black;
-}
-.selected {
-	background: steelblue;
-	color: white;
-}
-button {
-	border: none;
-	background: none;
-	text-transform: uppercase;
-	height: 100%;
-	font-weight: 700;
-	color: steelblue;
-	letter-spacing: 1px;
-	font-size: inherit;
-	transition: all 0.3s;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	outline: none;
+#email{
+	text-align: center;
+
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: lightblue;
+    text-decoration-color: #757575
+
+
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-button:hover {
-	color: white;
-	background: steelblue;
+#email:hover{
+	background-color: #757575
+
 }
 
+.class{
+	border: .5rem solid black;
+}
 

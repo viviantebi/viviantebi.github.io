@@ -1,123 +1,64 @@
-// var colors = [
-// 	"rgb(255, 0, 0)",
-// 	"rgb(255, 255, 0)",
-// 	"rgb(0, 255, 0)",
-// 	"rgb(0, 255, 255)",
-// 	"rgb(0, 0, 255)",
-// 	"rgb(255, 0, 255)"
-// ]
-var numSquares = 6
-var colors = generateRandomColors(numSquares);
-
-var squares = document.querySelectorAll(".square");
-var colorDisplay = document.getElementById("colorDisplay")
-var colorPicked = pickColor();
-colorDisplay.textContent = colorPicked;
-var messageDisplay = document.querySelector("#message")
-var h1 = document.querySelector("h1")
-var reset = document.querySelector("#reset")
-var easy = document.querySelector("#easy")
-var hard = document.querySelector("#hard")
+var openEmail = document.getElementById("email")
 
 
-easy.addEventListener("click",function(){
-	hard.classList.remove("selected");
-	easy.classList.add("selected")
-	colors = generateRandomColors(3);
-	// for (var i = 0; i < 3; i++) {
-	// 	squares[i].style.background = colors[i]
-	// }
-	// for (var i = 3; i < 6; i++) {
-	// 	squares[i].style.background = "#232323"
-	// }
-	numSquares = 3
-	colors = generateRandomColors(numSquares)
-	colorPicked = pickColor();
-	colorDisplay.textContent = colorPicked
-	for (var i = 0; i < squares.length; i++) {
-		if(colors[i])
-			squares[i].style.backgroundColor = colors[i]
-		else
-			squares[i].style.backgroundColor = "#232323"
-	}
-})
 
-hard.addEventListener("click", function(){
-	easy.classList.remove("selected")
-	hard.classList.add("selected")
-	numSquares = 6
-	colors = generateRandomColors(6)
-	colorPicked = pickColor();
-	colorDisplay.textContent = colorPicked
-	for (var i = 0; i < squares.length; i++) {
-		squares[i].style.background = colors[i]
-	}
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
 
-})
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
 
-reset.addEventListener("click", function(){
-	colors = generateRandomColors(numSquares);
-	colorPicked = pickColor();
-	colorDisplay.textContent = colorPicked
-	messageDisplay.textContent = ""
-	reset.textContent = "New Colors"
-	for (var i = 0; i < squares.length; i++) {
-		squares[i].style.background = colors[i]
-	}
-	h1.style.background = "steelblue";
-})
-// function getRandomInt(max) {
-//   return Math.floor(Math.random() * Math.floor(max));
-// }
-for (var i = 0; i < squares.length; i++) {
-	squares[i].style.backgroundColor = colors[i]
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
 
-	squares[i].addEventListener("click", function(){
-		var clickedColor = this.style.backgroundColor
-		if(clickedColor==colorPicked){
-			messageDisplay.textContent = "correct!"
-			reset.textContent = "Play Again?"
-			changeColors(clickedColor)
-			h1.style.background = clickedColor
-		}
-		else{
-			//alert("wrong")
-			this.style.backgroundColor = "#232323";
-			messageDisplay.textContent = "try again"
-		}
-	})
-}
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
-function changeColors(color){
-	for (var i = 0; i < squares.length; i++) {
-				squares[i].style.backgroundColor = color
-			}
-}
+        var that = this;
+        var delta = 200 - Math.random() * 100;
 
-function pickColor(){
-	var random = Math.floor(Math.random() * colors.length)
-	return colors[random]
-}
+        if (this.isDeleting) { delta /= 2; }
 
-function generateRandomColors(num){
-	//make an array, call random colors function, put it in array then return the array
-	var arr = []
-	for (var i = 0; i < num; i++) {
-		arr.push(randomColor())
-	}
-	return arr
-}
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
 
-function randomColor(){
-	//get a random number between 0 and 255
-	var r = Math.floor(Math.random() * 256)
-	var g = Math.floor(Math.random() * 256)
-	var b = Math.floor(Math.random() * 256)
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
 
-	//put it in rgb(r, g, b) format
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: .08em solid #fff}";
+        document.body.appendChild(css);
+    };
 
-	return "rgb(" + r +", " + g +", " + b +")";
 
-}
 
 

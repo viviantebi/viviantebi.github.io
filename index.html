@@ -1,35 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Color Game</title>
+	<title>Vivian's Portfolio</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://use.fontawesome.com/releases/v5.0/6/css/all.css">
+
 </head>
 <body>
+	
+	<div id="about"></div>
+	<div id="contact"></div>
+	<div id="projects"></div>
 
-	<h1>The Great 
-		<br>
-			<span id="colorDisplay">RGB</span> 
-		<br>
-			Color Game</h1>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+	  	<a class="navbar-brand" href="#">Home</a>
+		<div class="navbar-nav">
+		      <a class="nav-item nav-link" href="#scroll">About</a>
+		      <a class="nav-item nav-link" href="#scroll">Contact</a>
+		      <a class="nav-item nav-link" href="#scroll">Projects</a>
+	    </div>
+	</nav>
 
-	<div id="stripe">
-		<button id="reset">New Colors</button>
-		<span id="message"></span>
-		<!-- <span id="easy">Easy</span>
-		<span id="hard">Hard</span> -->
-		<button id="easy">Easy</button>
-		<button class="selected" id="hard">Hard</button>
+	<div class="slideshow">
+		<div id="home">
+			<img class="img-fluid" src="computer.jpg">
+			<div class="centered" class="line-1 anim-typewriter">Vivian Antebi
+				<h1>
+					<a href="" class="typewrite" data-period="2000" data-type='[ " Software Developer", "Website Developer" ]'>
+						<span class="wrap"></span>
+					</a>
+				</h1>
+			</div>
+		</div>
 	</div>
 
-	<div id="container">
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
-		<div class="square"></div>
+	<div id="about" class="row align-items-center">
+		<div  class="col-lg-6">
+			<i class="fas fa-laptop-code"></i>
+		<p id="scroll">My name is Vivian Antebi and I am a recent graduate from Brooklyn College with a Bachelor's Degree in Computer science. I have spent the last four years practicing HTML, CSS, JavaScript, C++, Java, and I'm always looking to learn more! </p>
+	</div>
+	<div class="col-lg-6">
+		<img class="img-fluid" src="grass.jpg">
+	</div>
+	</div>
+		<p id="sentence">I would love to hear from you!</p>
+
+	<div id="scroll" class="contact">
+		<button id="email" > <a href="mailto:viviantebi@gmail.com">Contact me!</a> </button>
 	</div>
 
+	<div id="projects" class="col-lg-3">
+		<h2>Projects</h2>
+			<a href="colorGame/colorGame.html" class="pichover" >
+				<img src="colorGame/colorgame.png" width="325" height="200" class="pichover">	
+			</a>	
+			<a href="PatatapClone/circles.html" class="pichover" id="scroll">
+				<img src="PatatapClone/patatappic.png" class="pichover">
+			</a>	
+		</div>
+	</div>
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
+
+
+
